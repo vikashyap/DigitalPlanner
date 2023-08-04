@@ -10,14 +10,14 @@ export const PENSION_ESTIMATOR_RISKLEVEL_RECORD: Readonly<
 > = {
   conservative: {
     label: "conservative",
-    value: 2,
+    value: 0.02,
   },
   moderate: {
     label: "moderate",
-    value: 4,
+    value: 0.04,
   },
   aggressive: {
     label: "aggressive",
-    value: 6,
+    value: 0.06,
   },
 };
