@@ -1,71 +1,33 @@
 "use client";
-import { useEffect, useMemo } from "react";
+import { LineChartGraph } from "@Components/index";
+import { useSavingPlanCalculator } from "../../hooks/useSavingPlanCalculator";
+import { useSavingPlanDataCalculation } from "../../hooks/useSavingPlanDataCalculation";
 import { usePensionEstimatorStore } from "../../store/PensionEstimatorStore";
 import { PensionEstimator } from "../../types";
-import PensionEstimatorChart from "./PensionEstimatorLineChartView";
+import { PensionEstimatorGraphPlaceholderView } from "./PensionEstimatorGraphPlaceholderView";
 export const PensionFormChartView = () => {
   const data = usePensionEstimatorStore(
     (state) => state.PensionEstimatorChartViewData
   ) satisfies PensionEstimator | null;
-
   console.log("PensionFormChartView data", data);
-  const currentYear = new Date().getFullYear();
-  const projectedData = useMemo(() => {
-    // Calculate projected savings data based on user inputs
-    if (!data) return null;
+  const projectedData = useSavingPlanCalculator();
+  console.log("PensionFormChartView projectedData", projectedData);
+  const chartData = useSavingPlanDataCalculation(projectedData);
+  console.log("PensionFormChartView chartData", chartData);
 
-    const values = data;
-    const {
-      initialDeposit,
-      monthlyContributions,
-      currentAge,
-      desiredRetirementAge,
-      riskLevel,
-    } = values;
-
-    const interestRate = riskLevel; // 2% for conservative, 4% for moderate, 6% for aggressive
-
-    const projectedSavingsData = Array.from({
-      length: desiredRetirementAge - currentAge + 1,
-    }).reduce((data: { [year: string]: number }, _, yearIndex) => {
-      const year = currentAge + yearIndex;
-      const yearsUntilRetirement = year - currentAge;
-      const compoundInterestFactor = Math.pow(
-        1 + interestRate,
-        yearsUntilRetirement
-      );
-      const savingsForYear =
-        initialDeposit +
-        monthlyContributions *
-          12 *
-          ((compoundInterestFactor - 1) / interestRate);
-
-      data[(currentYear + yearsUntilRetirement).toString()] =
-        Math.round(savingsForYear * 100) / 100; // Round to 2 decimal places
-
-      return data;
-    }, {});
-
-    return projectedSavingsData;
-  }, [currentYear, data]);
-
-  useEffect(() => {
-    // Subscribe to changes in PensionEstimatorChartViewData
-    const unsubscribe = usePensionEstimatorStore.subscribe((newData) => {
-      console.log("PensionEstimatorChartViewData changed:", newData);
-      // Do something with the changed data
-    });
-
-    // Clean up the subscription when the component unmounts
-    return unsubscribe;
-  }, []);
-
-  useEffect(() => {}, []);
+  if (!chartData.length) return <PensionEstimatorGraphPlaceholderView />;
   return (
-    <div className="h-full  bg-neutral-50 rounded-lg flex-grow">
-      {/* <pre>{JSON.stringify(data, null, 2)}</pre>
-      <pre>{JSON.stringify(projectedData, null, 2)}</pre> */}
-      <PensionEstimatorChart data={projectedData} />
-    </div>
+    <>
+      <h2 className="text-xl font-semibold">
+        Witness the potential growth of your pension investments.
+      </h2>
+      <div className="h-full  bg-neutral-50 rounded-lg flex-grow p-4 bg-neutral-50 rounded-lg h-full border border-orange-300 p-4 ">
+        <LineChartGraph
+          chartData={chartData}
+          dataKeyX="year"
+          dataKeyY="savings"
+        />
+      </div>
+    </>
   );
 };

@@ -1,5 +1,9 @@
 "use client";
-import { ControlledInputField, ControlledSelectField } from "@Components/index";
+import {
+  ControlledInputField,
+  ControlledRangeInputField,
+  ControlledSelectField,
+} from "@Components/index";
 import { superstructResolver } from "@hookform/resolvers/superstruct";
 import React, { useEffect, useMemo } from "react";
 import { useForm } from "react-hook-form";
@@ -31,20 +35,14 @@ export const PensionEstimatorFormView: React.FC = () => {
   const {
     control,
     formState: { isLoading, errors, isDirty },
-    handleSubmit,
     watch,
-    setError,
-    setValue,
     getValues,
   } = useForm<PensionEstimator>({
     mode: "onChange",
     resolver: superstructResolver(PensionEstimatorStruct),
     defaultValues: {
-      initialDeposit: 0,
-      monthlyContributions: 0,
-      desiredRetirementAge: 0,
-      currentAge: 0,
-      riskLevel: 2,
+      currentAge: 1,
+      desiredRetirementAge: 2,
     },
   });
 
@@ -65,55 +63,53 @@ export const PensionEstimatorFormView: React.FC = () => {
   }, [errors, getValues, isDirty, setPensionData, watchTheForm]);
 
   return (
-    <div className="bg-neutral-50 rounded-lg h-full shadow-lg shadow-orange-100 border border-orange-100">
-      <form className="grid grid-cols-1 md:grid-cols-3 gap-4 p-4">
-        <ControlledInputField
-          required
-          fullWidth
-          name="initialDeposit"
-          type="number"
-          label="Initial Deposit"
-          control={control}
-          disabled={isLoading}
-        />
+    <>
+      <h4 className="text-xl font-semibold">Calculate Your Pension Savings</h4>
+      <div className="bg-neutral-50 rounded-lg h-full  border border-orange-300 p-4">
+        <form className="grid grid-cols-1 md:grid-cols-3 gap-4 p-4">
+          <ControlledInputField
+            required
+            fullWidth
+            name="initialDeposit"
+            type="number"
+            label="Initial Deposit"
+            control={control}
+            disabled={isLoading}
+          />
 
-        <ControlledInputField
-          required
-          fullWidth
-          name="monthlyContributions"
-          type="number"
-          label="Monthly Contributions"
-          control={control}
-          disabled={isLoading}
-        />
-        <ControlledInputField
-          required
-          fullWidth
-          name="currentAge"
-          type="number"
-          label="Current Age"
-          control={control}
-          disabled={isLoading}
-        />
-
-        <ControlledInputField
-          required
-          fullWidth
-          name="desiredRetirementAge"
-          type="number"
-          label="Desired Retirement Age"
-          control={control}
-          disabled={isLoading}
-        />
-
-        <ControlledSelectField
-          name="riskLevel"
-          items={riskLevelOptions}
-          label="Risk Level"
-          control={control}
-          type="number"
-        />
-      </form>
-    </div>
+          <ControlledInputField
+            required
+            fullWidth
+            name="monthlyContributions"
+            type="number"
+            label="Monthly Contributions"
+            control={control}
+            disabled={isLoading}
+          />
+          <ControlledSelectField
+            name="riskLevel"
+            items={riskLevelOptions}
+            label="Risk Level"
+            control={control}
+            type="number"
+          />
+          <ControlledRangeInputField
+            required
+            fullWidth
+            name="currentAge"
+            label="Current Age"
+            control={control}
+          />
+          <ControlledRangeInputField
+            required
+            fullWidth
+            name="desiredRetirementAge"
+            label="Desired Retirement Age"
+            control={control}
+            min={2}
+          />
+        </form>
+      </div>
+    </>
   );
 };

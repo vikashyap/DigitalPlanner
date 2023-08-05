@@ -36,6 +36,7 @@ export function ControlledInputField<T extends FieldValues>(props: Props<T>) {
               className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
             >
               {props.label}
+              {props.required && <span className="text-red-500">*</span>}
             </label>
             <input
               {...field}

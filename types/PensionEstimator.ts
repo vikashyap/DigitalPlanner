@@ -21,3 +21,13 @@ export const PensionEstimatorStruct = type({
 });
 
 export type PensionEstimator = Infer<typeof PensionEstimatorStruct>;
+
+export type YearSavings = {
+  year: string;
+  savings: number;
+};
+
+export type ChartDataItem = {
+  year: string;
+  savings: number;
+};

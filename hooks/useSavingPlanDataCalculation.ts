@@ -1,0 +1,16 @@
+import { useMemo } from "react";
+import { ChartDataItem } from "../types";
+
+type YearSavingsData = Record<string, number> | null;
+
+export const useSavingPlanDataCalculation = (data: YearSavingsData) => {
+  const chartData: ChartDataItem[] = useMemo(() => {
+    if (!data) return [];
+    return Object.entries(data).map(([year, savings]) => ({
+      year,
+      savings,
+    }));
+  }, [data]);
+
+  return chartData;
+};
