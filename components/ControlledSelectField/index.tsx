@@ -27,7 +27,7 @@ export function ControlledSelectField<T extends FieldValues>(props: Props<T>) {
         ...(props.required && { required: "Required" }),
       }}
       render={({ field, fieldState }) => (
-        <div className="mb-6">
+        <div>
           <label
             htmlFor={props.name}
             className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"

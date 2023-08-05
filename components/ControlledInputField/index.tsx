@@ -30,7 +30,7 @@ export function ControlledInputField<T extends FieldValues>(props: Props<T>) {
           ? "bg-red-50 border border-red-500 text-red-900"
           : "";
         return (
-          <div className="mb-6">
+          <div>
             <label
               htmlFor="email"
               className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"

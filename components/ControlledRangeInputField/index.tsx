@@ -41,7 +41,7 @@ export function ControlledRangeInputField<T extends FieldValues>(
           : "";
 
         return (
-          <div className="mb-6">
+          <div>
             {props.label && (
               <label
                 htmlFor={props.name}
