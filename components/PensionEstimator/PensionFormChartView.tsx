@@ -8,7 +8,7 @@ import { PensionEstimatorGraphPlaceholderView } from "./PensionEstimatorGraphPla
 export const PensionFormChartView = () => {
   const data = usePensionEstimatorStore(
     (state) => state.PensionEstimatorChartViewData
-  ) satisfies PensionEstimator | null;
+  ) as PensionEstimator | null;
   console.log("PensionFormChartView data", data);
   const projectedData = useSavingPlanCalculator();
   console.log("PensionFormChartView projectedData", projectedData);

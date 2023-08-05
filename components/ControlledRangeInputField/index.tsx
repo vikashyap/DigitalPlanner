@@ -11,13 +11,17 @@ interface Props<T extends FieldValues> {
   max?: number;
   step?: number;
   required?: boolean;
+  helperText?: string;
 }
 
 export function ControlledRangeInputField<T extends FieldValues>(
   props: Props<T>
 ) {
   const { min = 1, max = 100, step = 1, required } = props;
-  const [sliderValue, setSliderValue] = useState(min);
+  const [sliderValue, setSliderValue] = useState(
+    // Use the default value from the form or a fallback value
+    props.control._defaultValues?.[props.name] || min
+  );
 
   const handleSliderDelayedChange = useCallback((value: number, field: any) => {
     setSliderValue(value);
@@ -53,7 +57,7 @@ export function ControlledRangeInputField<T extends FieldValues>(
               id={props.name}
               min={min}
               max={max}
-              value={sliderValue ?? min}
+              value={sliderValue}
               onChange={(e) => {
                 setSliderValue(Number(e.target.value)); // Manually update slider value to avoid lag
               }}
@@ -72,7 +76,7 @@ export function ControlledRangeInputField<T extends FieldValues>(
             </div>
             {fieldState.error && (
               <span className="error  text-xs text-red-900">
-                Desired Retirement Age should be greater than Current Age
+                {props.helperText || fieldState.error.message}
               </span>
             )}
           </div>

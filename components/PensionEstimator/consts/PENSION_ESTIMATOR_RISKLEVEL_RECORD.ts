@@ -1,4 +1,4 @@
-import { RiskLevel } from "../types";
+import { RiskLevel } from "../../../types";
 
 interface PensionEstimatorRiskLevelRecordValue {
   label: RiskLevel;

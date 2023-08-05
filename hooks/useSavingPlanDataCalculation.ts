@@ -1,7 +1,5 @@
 import { useMemo } from "react";
-import { ChartDataItem } from "../types";
-
-type YearSavingsData = Record<string, number> | null;
+import { ChartDataItem, YearSavingsData } from "../types";
 
 export const useSavingPlanDataCalculation = (data: YearSavingsData) => {
   const chartData: ChartDataItem[] = useMemo(() => {

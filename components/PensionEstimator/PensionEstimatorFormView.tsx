@@ -7,12 +7,12 @@ import {
 import { superstructResolver } from "@hookform/resolvers/superstruct";
 import React, { useEffect, useMemo } from "react";
 import { useForm } from "react-hook-form";
-import { PENSION_ESTIMATOR_RISKLEVEL_RECORD } from "../../consts/PENSION_ESTIMATOR_RISKLEVEL_RECORD"; // TODO: adjust path in tsconfig
 import {
   PensionEstimator,
   PensionEstimatorStruct,
   RiskLevel,
 } from "../../types/"; // TODO: adjust path in tsconfig
+import { PENSION_ESTIMATOR_RISKLEVEL_RECORD } from "./consts/PENSION_ESTIMATOR_RISKLEVEL_RECORD"; // TODO: adjust path in tsconfig
 
 import { assert } from "superstruct";
 import { usePensionEstimatorStore } from "../../store/PensionEstimatorStore"; // TODO: adjust path in tsconfig
@@ -41,8 +41,8 @@ export const PensionEstimatorFormView: React.FC = () => {
     mode: "onChange",
     resolver: superstructResolver(PensionEstimatorStruct),
     defaultValues: {
-      currentAge: 1,
-      desiredRetirementAge: 2,
+      currentAge: 10,
+      desiredRetirementAge: 70,
     },
   });
 
@@ -99,6 +99,7 @@ export const PensionEstimatorFormView: React.FC = () => {
             name="currentAge"
             label="Current Age"
             control={control}
+            helperText="Must be less than Desired Retirement Age"
           />
           <ControlledRangeInputField
             required
@@ -106,7 +107,7 @@ export const PensionEstimatorFormView: React.FC = () => {
             name="desiredRetirementAge"
             label="Desired Retirement Age"
             control={control}
-            min={2}
+            helperText="Must be greater than Current Age"
           />
         </form>
       </div>

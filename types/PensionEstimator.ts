@@ -12,20 +12,26 @@ const isGreaterThanCurrentAge = refine(
   }
 );
 
+const isLessThanDesiredRetirementAge = refine(
+  number(),
+  "isLessThanDesiredRetirementAge",
+  (value: number, context: any) => {
+    const currentAge = context.branch[0]?.desiredRetirementAge;
+    return value < currentAge;
+  }
+);
+
 export const PensionEstimatorStruct = type({
   initialDeposit: min(integer(), 1),
   monthlyContributions: min(integer(), 1),
   desiredRetirementAge: isGreaterThanCurrentAge,
-  currentAge: min(integer(), 1),
+  currentAge: isLessThanDesiredRetirementAge,
   riskLevel: number(),
 });
 
 export type PensionEstimator = Infer<typeof PensionEstimatorStruct>;
 
-export type YearSavings = {
-  year: string;
-  savings: number;
-};
+export type YearSavingsData = Record<string, number> | null;
 
 export type ChartDataItem = {
   year: string;
