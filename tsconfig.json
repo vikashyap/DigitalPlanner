@@ -26,7 +26,19 @@
     "paths": {
       "@Components/*": [
         "./components/*.ts"
-      ]
+      ],
+      "@hooks/*": [
+        "./hooks/*.ts"
+      ],
+      "@lib/*": [
+        "./lib/*.ts"
+      ],
+      "@store/*": [
+        "./store/*.ts"
+      ],
+      "@types/*": [
+        "./types/*.ts"
+      ],
     }
   },
   "include": [

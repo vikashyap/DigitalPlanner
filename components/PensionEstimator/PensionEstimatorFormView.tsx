@@ -11,11 +11,11 @@ import {
   PensionEstimator,
   PensionEstimatorStruct,
   RiskLevel,
-} from "../../types/"; // TODO: adjust path in tsconfig
-import { PENSION_ESTIMATOR_RISKLEVEL_RECORD } from "./consts/PENSION_ESTIMATOR_RISKLEVEL_RECORD"; // TODO: adjust path in tsconfig
+} from "../../types/";
+import { PENSION_ESTIMATOR_RISKLEVEL_RECORD } from "./consts/PENSION_ESTIMATOR_RISKLEVEL_RECORD";
 
+import { usePensionEstimatorStore } from "@store/PensionEstimatorStore";
 import { assert } from "superstruct";
-import { usePensionEstimatorStore } from "../../store/PensionEstimatorStore"; // TODO: adjust path in tsconfig
 
 export const PensionEstimatorFormView: React.FC = () => {
   // Get the setter function from the store

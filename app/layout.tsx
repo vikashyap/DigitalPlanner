@@ -6,14 +6,17 @@ import "./globals.css";
 
 const inter = Inter({ subsets: ["latin"] });
 
+//Note: Only using default export for root layout
 export default function RootLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
+  console.log("RootLayout rendered"); // to show that this component is not re-rendered on route change
   return (
     <html lang="en">
       <body className={`${inter.className} min-h-screen`}>
+        {/* StyledComponentsRegistry added to support styled components in application  */}
         <StyledComponentsRegistry>
           <div className="min-h-screen flex flex-col">
             <MainHeader />

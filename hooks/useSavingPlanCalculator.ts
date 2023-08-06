@@ -1,27 +1,29 @@
+import { usePensionEstimatorStore } from "@store/PensionEstimatorStore";
 import { useEffect, useMemo } from "react";
-import { usePensionEstimatorStore } from "../store/PensionEstimatorStore";
 import { PensionEstimator } from "../types";
 
 export function useSavingPlanCalculator() {
   const data = usePensionEstimatorStore(
     (state) => state.PensionEstimatorChartViewData
-  ) satisfies PensionEstimator | null;
-  console.log("PensionFormChartView data", data);
+  ) satisfies PensionEstimator | null; // get updated valid  data from the store
 
+  // Subscribe to valid data changes in PensionEstimatorFormView, and update the chart data
   useEffect(() => {
-    // Subscribe to changes in PensionEstimatorChartViewData
     const unsubscribe = usePensionEstimatorStore.subscribe((newData) => {
       console.log("PensionEstimatorChartViewData changed:", newData);
-      // Do something with the changed data
+      // Do something with the changed data, e.g. update the chart  or use any local state
     });
 
     // Clean up the subscription when the component unmounts
     return unsubscribe;
   }, []);
   const currentYear = new Date().getFullYear();
+
+  // Calculate projected savings data based on user inputs
   return useMemo(() => {
-    // Calculate projected savings data based on user inputs
-    if (!data) return null;
+    if (!data) {
+      return null;
+    }
 
     const values = data;
     const {

@@ -1,7 +1,9 @@
-// Info: Home page component, just used to show how we share main layout components
+// Info: Home page component, just used to show how we share main layout components,
+// Note: This is a dummy page, just to show how we share main layout components, tailwindcss not optmised for this page, just copy and paste from flowbite docs
+
 const page = () => {
   return (
-    <section className="bg-center bg-no-repeat bg-[url('https://flowbite.s3.amazonaws.com/docs/jumbotron/conference.jpg')] bg-gray-700 bg-blend-multiply">
+    <section className="flex-grow bg-center bg-no-repeat bg-[url('https://flowbite.s3.amazonaws.com/docs/jumbotron/conference.jpg')] bg-gray-700 bg-blend-multiply">
       <div className="px-4 mx-auto max-w-screen-xl text-center py-10 lg:py-40">
         <h1 className="mb-4 text-4xl font-extrabold tracking-tight leading-none text-white md:text-5xl lg:text-6xl">
           We build the tools you need to plan for your future
@@ -25,9 +27,9 @@ const page = () => {
             >
               <path
                 stroke="currentColor"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="2"
                 d="M1 5h12m0 0L9 1m4 4L9 9"
               />
             </svg>

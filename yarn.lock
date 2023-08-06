@@ -1041,7 +1041,7 @@
   dependencies:
     regenerator-runtime "^0.13.11"
 
-"@babel/template@^7.12.13", "@babel/template@^7.18.10", "@babel/template@^7.22.5":
+"@babel/template@^7.18.10", "@babel/template@^7.22.5":
   version "7.22.5"
   resolved "https://registry.yarnpkg.com/@babel/template/-/template-7.22.5.tgz#0c8c4d944509875849bd0344ff0050756eefc6ec"
   integrity sha512-X7yV7eiwAxdj9k94NEylvbVHLiVG1nvzCV2EAowhxLTwODV1jl9UzZ48leOC0sH7OnuHrIkllaBgneUykIcZaw==
@@ -1389,11 +1389,6 @@
   resolved "https://registry.yarnpkg.com/@types/json5/-/json5-0.0.29.tgz#ee28707ae94e11d2b827bcbe5270bcea7f3e71ee"
   integrity sha512-dRLjCWHYg4oaA77cxO64oO+7JwCwnIzkZPdrrC71jQmQtlhM556pwKo5bUzqvZndkVbeFLIIi+9TC40JNF5hNQ==
 
-"@types/lodash@^4.14.196":
-  version "4.14.196"
-  resolved "https://registry.yarnpkg.com/@types/lodash/-/lodash-4.14.196.tgz#a7c3d6fc52d8d71328b764e28e080b4169ec7a95"
-  integrity sha512-22y3o88f4a94mKljsZcanlNWPzO0uBsBdzLAngf2tp533LzZcQzb6+eZPJ+vCTt+bqF2XnvT9gejTLsAcJAJyQ==
-
 "@types/node@20.4.5":
   version "20.4.5"
   resolved "https://registry.yarnpkg.com/@types/node/-/node-20.4.5.tgz#9dc0a5cb1ccce4f7a731660935ab70b9c00a5d69"
@@ -1708,13 +1703,6 @@ babel-plugin-polyfill-regenerator@^0.5.1:
   integrity sha512-tAlOptU0Xj34V1Y2PNTL4Y0FOJMDB6bZmoW39FeCQIhigGLkqu3Fj6uiXpxIf6Ij274ENdYx64y6Au+ZKlb1IA==
   dependencies:
     "@babel/helper-define-polyfill-provider" "^0.4.2"
-
-babel-plugin-twin@^1.1.0:
-  version "1.1.0"
-  resolved "https://registry.yarnpkg.com/babel-plugin-twin/-/babel-plugin-twin-1.1.0.tgz#fa2e9d94c22ed8bf2649fb7db508b9141e8cbb50"
-  integrity sha512-x4AZ7JSh8MmC6uEN41nrU021jLA0B4E1UD7AI0KJOtAwvTH1wEMLugW5SyY4m/CWDtsqZc1fqT1lkDoO2rdmHg==
-  dependencies:
-    "@babel/template" "^7.12.13"
 
 balanced-match@^1.0.0:
   version "1.0.2"
