@@ -2,15 +2,12 @@ This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next
 
 ## Getting Started
 
-First, run the development server:
+To set up the project locally, follow these steps:
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-```
+1. Clone this repository.
+2. Navigate to the project directory in your terminal.
+3. Run `npm install` to install the project dependencies.
+4. Use `npm run dev` to start the development server.
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
@@ -24,15 +21,6 @@ To learn more about Next.js, take a look at the following resources:
 
 - [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
 - [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-## Getting Started
-
-To set up the project locally, follow these steps:
-
-1. Clone this repository.
-2. Navigate to the project directory in your terminal.
-3. Run `npm install` to install the project dependencies.
-4. Use `npm run dev` to start the development server.
 
 ## Folder Structure
 
