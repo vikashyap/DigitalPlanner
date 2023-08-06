@@ -50,6 +50,7 @@ Learn more about the [App folder approach](https://nextjs.org/docs/app/building-
 - `react-hook-form`: Library for managing form state and validations. [Link to react-hook-form](https://react-hook-form.com/).
 - `superstruct`: Enhances typing and validation for forms. [Link to superstruct](https://docs.superstructjs.org/).
 - `recharts`: Used for creating charts within the application. [Link to Recharts](https://recharts.org/en-US).
+- `Tailwindcss`: Used for giving the styles to the application. [Link to TailwindCss](https://tailwindcss.com/).
 
 ## Available Scripts
 
