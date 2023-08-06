@@ -59,6 +59,7 @@ In the project directory, you can run the following scripts:
 - `npm run build`: Builds the production-ready application.
 - `npm start`: Starts the production server.
 - `npm run lint`: Runs linting for code quality checks.
+- `npm run test`: Runs Test to test the apllication.
 
 ## Writing Tests
 
