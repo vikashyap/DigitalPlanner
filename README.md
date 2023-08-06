@@ -62,7 +62,8 @@ In the project directory, you can run the following scripts:
 
 ## Writing Tests
 
-_TODO: Add information about writing test cases._
+Unit test cases only written to one hook file, which is `useSavingsProgressEstimationInYears`
+Buisness logic should be seprate like this hook file, thats how it's easy to test
 
 ## Twin.macro Integration
 
